@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:20:43 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 13:12:36 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 02:26:56 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,17 @@ int		ft_check_ori(char c)
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (1);
 	return (0);
+}
+
+void	ft_get_start(cube_t *conf, char c, int x, int y)
+{
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+	{
+		conf->ori = c;
+		conf->posX = x;
+		conf->posY = y;
+		conf->map[y][x] = 0;
+	}
 }
 
 int		ft_parsing_m(cube_t *conf, char *line, int *check)

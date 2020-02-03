@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 10:59:15 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 13:13:09 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 02:35:57 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,7 @@ void	ft_check_end_map(int fd, int res, char **line, cube_t *conf)
 	int i;
 
 	i = 0;
+	ft_printf("ori: %c X : %d Y: %d",conf->ori,conf->posX,conf->posY);
 	while (res > 0)
 	{
 		res = get_next_line(fd, line);
@@ -25,6 +26,9 @@ void	ft_check_end_map(int fd, int res, char **line, cube_t *conf)
 			ft_stderr(5, conf);
 		free(*line);
 	}
+	
+	if (!conf->ori)
+		ft_stderr(5, conf);
 	close(fd);
 }
 
@@ -74,7 +78,6 @@ void	ft_fill_map(cube_t *conf)
 {
 	int x;
 	int y;
-	int save;
 
 	x = 0;
 	y = 0;
@@ -86,15 +89,17 @@ void	ft_fill_map(cube_t *conf)
 			if (y == 0 || x == 0)
 				if (conf->map[y][x] != '1')
 					ft_stderr(5, conf);
+			ft_get_start(conf, conf->map[y][x], x, y);
 			x++;
 		}
 		if (y == 0)
-			save = x;
-		else if (x != save)
+			conf->lenX = x;
+		else if (x != conf->lenX)
 			ft_stderr(5, conf);
+		x = 0;
 		y++;
 	}
-	if (y < 3 || x < 3 || ft_check_one(conf, x - 1, y - 1))
+	if (y < 3 || conf->lenX < 3 || ft_check_one(conf, conf->lenX - 1, y - 1))
 		ft_stderr(5, conf);
 }
 
@@ -121,5 +126,4 @@ void	ft_parsing_all(int gc, char **gv, cube_t *conf)
 	}
 	ft_fill_map(conf);
 	ft_check_end_map(fd, res, &line, conf);
-	ft_printf("%s", conf->temp);
 }

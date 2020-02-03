@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 11:31:01 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 13:15:40 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,15 +16,16 @@
 # include "../libft/includes/ft_printf.h"
 # include <math.h>
 
-typedef struct		data_s
-{
-    void			*mlx_ptr;
-    void			*mlx_win;
-}                   data_t;
-
 typedef struct		cube_s
 {
+	void			*mlx_ptr;
+    void			*mlx_win;
+	void			*mlx_img;
+	char			*mlx_data;
     int				reso[2];
+	int 			sizeLine;
+	int				endian;
+	int 			bpp;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -34,6 +35,37 @@ typedef struct		cube_s
 	int				c[3];
 	char			**map;
 	char			*temp;
+	char			ori;
+	int				lenX;
+	//int				lenY;
+	int				posX;
+	int				posY;
+	float			dirX;
+	float			dirY;
+	float			planeX;
+	float			planeY;
+	float			time;
+	float			oldtime;
+	float			cameraX;
+	float			rayDirX;
+	float			rayDirY;
+	int				mapX;
+	int				mapY;
+	float			sideDistX;
+	float			sideDistY;
+	float			deltaDistX;
+	float 			deltaDistY;
+	int				lineHeight;
+	float			perpWallDist;
+	int				stepX;
+	int				stepY;
+	int				hit;
+	int				side;
+	int				drawStart;
+	int				drawEnd;
+	int 			color;
+	int				*imgpoke;
+	unsigned char	chan[3];
 }					cube_t;
 
 void				ft_stderr(int nb, cube_t *conf);
@@ -42,6 +74,7 @@ int					ft_check_after(char *str, int i);
 int		            ft_parsing_arg(int gc, char **gv);
 int					ft_get_id(char *str, cube_t *conf);
 int					ft_parsing_map(char *line, cube_t *conf, int *check);
+void				ft_get_start(cube_t *conf, char c, int x, int y);
 void 				ft_parsing_screen(char *line, cube_t *conf, int i);
 void				ft_parsing_color(char *line, cube_t *conf, int i, int nb);
 void    			ft_parsing_path(char *line, cube_t *conf, int i, int nb);

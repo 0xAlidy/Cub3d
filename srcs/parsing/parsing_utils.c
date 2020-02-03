@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 15:45:22 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 14:37:10 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,6 +45,12 @@ cube_t	ft_init_conf(void)
 {
 	cube_t	res;
 
+ 	res.mlx_ptr= 0;
+    res.mlx_win = 0;
+	res.mlx_img = 0;
+	res.mlx_data = 0;
+	res.sizeLine = 0;
+	res.endian = 1;
 	res.no = NULL;
 	res.so = NULL;
 	res.we = NULL;
@@ -56,10 +62,29 @@ cube_t	ft_init_conf(void)
 	res.c[0] = -1;
 	res.c[1] = -1;
 	res.c[2] = -1;
-	res.reso[0] = 0;
-	res.reso[1] = 0;
 	res.map = NULL;
 	res.temp = NULL;
+	res.lenX = 1280;
+	res.dirX = -1;
+	res.dirY = 0;
+	res.planeX = 0;
+	res.planeY = 0.66;
+	res.time = 0;
+	res.oldtime = 0;
+	res.cameraX = 0;
+	res.rayDirX = 0;
+	res.rayDirY = 0;
+	res.mapX = 0;
+	res.mapY = 0;
+	res.sideDistX = 0;
+	res.sideDistY = 0;
+	res.deltaDistX = 0;
+	res.deltaDistY = 0;
+	res.lineHeight = 0;
+	res.bpp = 32;
+	res.hit = 0;
+	res.color = 0x9400D3;
+	res.perpWallDist = 0;
 	return (res);
 }
 
