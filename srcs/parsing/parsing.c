@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 10:59:15 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 02:35:57 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 03:12:11 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,6 @@ void	ft_check_end_map(int fd, int res, char **line, cube_t *conf)
 	int i;
 
 	i = 0;
-	ft_printf("ori: %c X : %d Y: %d",conf->ori,conf->posX,conf->posY);
 	while (res > 0)
 	{
 		res = get_next_line(fd, line);

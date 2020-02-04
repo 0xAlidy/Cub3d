@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 13:15:40 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 03:06:46 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ typedef struct		cube_s
 	void			*mlx_ptr;
     void			*mlx_win;
 	void			*mlx_img;
-	char			*mlx_data;
+	int				*mlx_data;
     int				reso[2];
 	int 			sizeLine;
 	int				endian;
@@ -38,8 +38,8 @@ typedef struct		cube_s
 	char			ori;
 	int				lenX;
 	//int				lenY;
-	int				posX;
-	int				posY;
+	float			posX;
+	float			posY;
 	float			dirX;
 	float			dirY;
 	float			planeX;
@@ -64,8 +64,6 @@ typedef struct		cube_s
 	int				drawStart;
 	int				drawEnd;
 	int 			color;
-	int				*imgpoke;
-	unsigned char	chan[3];
 }					cube_t;
 
 void				ft_stderr(int nb, cube_t *conf);

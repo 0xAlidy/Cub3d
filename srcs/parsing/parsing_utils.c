@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 14:37:10 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 03:23:02 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,11 +64,10 @@ cube_t	ft_init_conf(void)
 	res.c[2] = -1;
 	res.map = NULL;
 	res.temp = NULL;
-	res.lenX = 1280;
-	res.dirX = -1;
-	res.dirY = 0;
-	res.planeX = 0;
-	res.planeY = 0.66;
+	res.dirX = 0;
+	res.dirY = -1;
+	res.planeX = 0.66;
+	res.planeY = 0;
 	res.time = 0;
 	res.oldtime = 0;
 	res.cameraX = 0;
