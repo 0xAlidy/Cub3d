@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 03:23:02 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 15:35:54 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -82,8 +82,10 @@ cube_t	ft_init_conf(void)
 	res.lineHeight = 0;
 	res.bpp = 32;
 	res.hit = 0;
-	res.color = 0x9400D3;
+	res.color = 0;
 	res.perpWallDist = 0;
+	res.rotaSpeed = 0.06;
+	res.moveSpeed = 0.06;
 	return (res);
 }
 

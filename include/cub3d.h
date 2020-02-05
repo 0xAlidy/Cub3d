@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 03:06:46 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 14:20:02 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,25 +38,25 @@ typedef struct		cube_s
 	char			ori;
 	int				lenX;
 	//int				lenY;
-	float			posX;
-	float			posY;
-	float			dirX;
-	float			dirY;
-	float			planeX;
-	float			planeY;
-	float			time;
-	float			oldtime;
-	float			cameraX;
-	float			rayDirX;
-	float			rayDirY;
+	double			posX;
+	double			posY;
+	double			dirX;
+	double			dirY;
+	double			planeX;
+	double			planeY;
+	double			time;
+	double			oldtime;
+	double			cameraX;
+	double			rayDirX;
+	double			rayDirY;
 	int				mapX;
 	int				mapY;
-	float			sideDistX;
-	float			sideDistY;
-	float			deltaDistX;
-	float 			deltaDistY;
+	double			sideDistX;
+	double			sideDistY;
+	double			deltaDistX;
+	double 			deltaDistY;
 	int				lineHeight;
-	float			perpWallDist;
+	double			perpWallDist;
 	int				stepX;
 	int				stepY;
 	int				hit;
@@ -64,6 +64,12 @@ typedef struct		cube_s
 	int				drawStart;
 	int				drawEnd;
 	int 			color;
+	int				keyDown;
+	int				keyUp;
+	int				keyLeft;
+	int				keyRight;
+	double			rotaSpeed;
+	double			moveSpeed;
 }					cube_t;
 
 void				ft_stderr(int nb, cube_t *conf);
