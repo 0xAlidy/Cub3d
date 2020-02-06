@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:20:43 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 00:21:24 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 18:00:47 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ void	ft_get_start(cube_t *conf, char c, int x, int y)
 		conf->ori = c;
 		conf->posX = x;
 		conf->posY = y;
-		conf->map[y][x] = 0;
+		conf->map[y][x] = '0';
 	}
 }
 

@@ -6,7 +6,7 @@
 #    By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/02/04 03:25:07 by alidy       ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/06 17:43:02 by alidy       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,13 +17,16 @@ LIBS			=		libft/libftprintf.a
 
 SRC_PATH		=		srcs
 
-SRCS_NAME		=		main.c							\
+SRCS_NAME		=		cube.c							\
+						cube_utils.c 					\
 						parsing/parsing.c 				\
-						parsing/parsing_utils.c 		\
 						parsing/parsing_screen_path.c 	\
 						parsing/parsing_color.c 		\
 						parsing/parsing_map.c 			\
 						parsing/parsing_conf_arg.c 		\
+						raycasting/ray_movement.c 		\
+						raycasting/ray_cube.c 			\
+						raycasting/raycasting.c 		\
 
 OBJS			=		${SRCS:.c=.o}
 
@@ -33,7 +36,7 @@ RM				=		rm -f
 
 CC				=		gcc
 
-FLAGS			=		-Wall -Wextra -Werror -g
+FLAGS			=		-Wall -Wextra -Werror -g3
 
 SRCS			=		$(addprefix $(SRC_PATH)/,$(SRCS_NAME))
 

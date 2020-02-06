@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   parsing_utils.c                                  .::    .:/ .      .::   */
+/*   cube_utils.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 15:35:54 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 19:13:52 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../include/cub3d.h"
 
 void	ft_free_conf(cube_t *conf)
 {
@@ -43,50 +43,23 @@ void	ft_free_conf(cube_t *conf)
 
 cube_t	ft_init_conf(void)
 {
-	cube_t	res;
+	cube_t	conf;
 
- 	res.mlx_ptr= 0;
-    res.mlx_win = 0;
-	res.mlx_img = 0;
-	res.mlx_data = 0;
-	res.sizeLine = 0;
-	res.endian = 1;
-	res.no = NULL;
-	res.so = NULL;
-	res.we = NULL;
-	res.ea = NULL;
-	res.s = NULL;
-	res.f[0] = -1;
-	res.f[1] = -1;
-	res.f[2] = -1;
-	res.c[0] = -1;
-	res.c[1] = -1;
-	res.c[2] = -1;
-	res.map = NULL;
-	res.temp = NULL;
-	res.dirX = 0;
-	res.dirY = -1;
-	res.planeX = 0.66;
-	res.planeY = 0;
-	res.time = 0;
-	res.oldtime = 0;
-	res.cameraX = 0;
-	res.rayDirX = 0;
-	res.rayDirY = 0;
-	res.mapX = 0;
-	res.mapY = 0;
-	res.sideDistX = 0;
-	res.sideDistY = 0;
-	res.deltaDistX = 0;
-	res.deltaDistY = 0;
-	res.lineHeight = 0;
-	res.bpp = 32;
-	res.hit = 0;
-	res.color = 0;
-	res.perpWallDist = 0;
-	res.rotaSpeed = 0.06;
-	res.moveSpeed = 0.06;
-	return (res);
+	conf.f[0] = -1;
+	conf.f[1] = -1;
+	conf.f[2] = -1;
+	conf.c[0] = -1;
+	conf.c[1] = -1;
+	conf.c[2] = -1;
+	conf.endian = 1;
+	conf.dirX = 0;
+	conf.dirY = -1;
+	conf.planeX = 0.66;
+	conf.planeY = 0;
+	conf.bpp = 32;
+	conf.rotaSpeed = 0.06;
+	conf.moveSpeed = 0.06;
+	return (conf);
 }
 
 void	ft_stderr(int nb, cube_t *conf)
