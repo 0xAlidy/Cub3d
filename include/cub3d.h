@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 17:44:14 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:33:06 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,12 +62,16 @@ typedef struct		cube_s
 	int				drawStart;
 	int				drawEnd;
 	int 			color;
+	int				colorF;
+	int				colorC;
 	int				keyDown;
 	int				keyUp;
 	int				keyLeft;
 	int				keyRight;
 	double			rotaSpeed;
 	double			moveSpeed;
+	int				textWidth;
+	int				textheight;
 }					cube_t;
 
 void				ft_stderr(int nb, cube_t *conf);
@@ -88,5 +92,6 @@ int					color(int r, int g, int b);
 int					keyhooks(cube_t *conf);
 void    			ft_game(cube_t *conf);
 int					ft_raycasting(cube_t *conf);
+int					ft_closeWin(cube_t *conf);
 
 #endif

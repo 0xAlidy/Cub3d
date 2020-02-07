@@ -6,20 +6,12 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/06 17:35:16 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 17:47:56 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 12:44:42 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-int		ft_closeWin(cube_t *conf)
-{
-	mlx_destroy_window(conf->mlx_ptr, conf->mlx_win);
-	ft_free_conf(conf);
-	exit(EXIT_SUCCESS);
-	return (EXIT_SUCCESS);
-}
 
 int		ft_defineMovement(int key, cube_t *conf)
 {
@@ -61,18 +53,76 @@ int		color(int r, int g, int b)
 	return (color);
 }
 
-void    ft_game(cube_t *conf)
+void	ft_startRota(cube_t *conf)
 {
-    if ((conf->mlx_ptr = mlx_init()) == NULL)
-        ft_stderr(-1, conf);
-    if ((conf->mlx_win = mlx_new_window(conf->mlx_ptr, conf->reso[0], conf->reso[1], "Cub3D")) == NULL)
-        ft_stderr(-1, conf);
-    conf->mlx_img = mlx_new_image(conf->mlx_ptr, conf->reso[0], conf->reso[1]);
-    conf->sizeLine = conf->reso[0] * 4;
-    conf->mlx_data = (int *)mlx_get_data_addr(conf->mlx_img, &(conf->bpp), &(conf->sizeLine), &(conf->endian));
-    mlx_loop_hook(conf->mlx_ptr, ft_raycasting, conf);
-	mlx_hook(conf->mlx_win, 2, 0, ft_defineMovement, conf);
-	mlx_hook(conf->mlx_win, 3, 0, ft_resetMovement, conf);
-	mlx_hook(conf->mlx_win, 17, 0, ft_closeWin, conf);
-    mlx_loop(conf->mlx_ptr);
+    float 	oldDirX;
+    float 	oldplaneX;
+	float	rota;
+
+	rota = 0;
+	if (conf->ori == 'W')
+		rota = 1.58;
+	else if (conf->ori == 'S')
+		rota = 3.14;
+	else if (conf->ori == 'E')
+		rota = 4.71;
+    oldDirX = conf->dirX;
+    oldplaneX = conf->planeX;
+	conf->dirX = conf->dirX * cos(-rota) - conf->dirY * sin(-rota);
+	conf->dirY = oldDirX * sin(-rota) + conf->dirY * cos(-rota);
+	conf->planeX = conf->planeX * cos(-rota) - conf->planeY * sin(-rota);
+	conf->planeY = oldplaneX * sin(-rota) + conf->planeY * cos(-rota);
+}
+
+void	ft_startMove(cube_t *c)
+{
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while (c->map[0][x])
+		x++;
+	while (c->map[y])
+		y++;
+	if (c->posX == 1 && c->posY == 1)
+	{
+		c->posX += 0.0001;
+		c->posY += 0.0001; 
+	}
+	else if (c->posX == 1 && c->posY == y - 2)
+	{
+		c->posX += 0.0001;
+		c->posY += 0.9999;
+	}
+	else if (c->posX == x - 2 && c->posY == 1)
+	{
+		c->posX += 0.9999;
+		c->posY += 0.0001;
+	}
+	else if (c->posX == x - 2 && c->posY == y - 2)
+	{
+		c->posX += 0.9999;
+		c->posY += 0.9999;
+	}
+}
+
+void    ft_game(cube_t *c)
+{
+    if ((c->mlx_ptr = mlx_init()) == NULL)
+        ft_stderr(-1, c);
+    if ((c->mlx_win = mlx_new_window(c->mlx_ptr, c->reso[0], c->reso[1], "Cub3D")) == NULL)
+        ft_stderr(-1, c);
+    c->mlx_img = mlx_new_image(c->mlx_ptr, c->reso[0], c->reso[1]);
+    c->sizeLine = c->reso[0] * 4;
+    c->mlx_data = (int *)mlx_get_data_addr(c->mlx_img, &(c->bpp), &(c->sizeLine), &(c->endian));
+	c->colorF = color(c->f[0], c->f[1], c->f[2]);
+	c->colorC = color(c->c[0], c->c[1], c->c[2]);
+	ft_startRota(c);
+	ft_startMove(c);
+    mlx_loop_hook(c->mlx_ptr, ft_raycasting, c);
+	mlx_hook(c->mlx_win, 2, 0, ft_defineMovement, c);
+	mlx_hook(c->mlx_win, 3, 0, ft_resetMovement, c);
+	mlx_hook(c->mlx_win, 17, 0, ft_closeWin, c);
+    mlx_loop(c->mlx_ptr);
 }

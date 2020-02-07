@@ -6,12 +6,20 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:13:52 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:26:57 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int		ft_closeWin(cube_t *conf)
+{
+	mlx_destroy_window(conf->mlx_ptr, conf->mlx_win);
+	ft_free_conf(conf);
+	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
+}
 
 void	ft_free_conf(cube_t *conf)
 {
@@ -59,6 +67,8 @@ cube_t	ft_init_conf(void)
 	conf.bpp = 32;
 	conf.rotaSpeed = 0.06;
 	conf.moveSpeed = 0.06;
+	conf.textWidth = 300;
+	conf.textheight = 300;
 	return (conf);
 }
 
