@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/06 17:35:16 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 12:44:42 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 15:23:45 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -118,6 +118,14 @@ void    ft_game(cube_t *c)
     c->mlx_data = (int *)mlx_get_data_addr(c->mlx_img, &(c->bpp), &(c->sizeLine), &(c->endian));
 	c->colorF = color(c->f[0], c->f[1], c->f[2]);
 	c->colorC = color(c->c[0], c->c[1], c->c[2]);
+    c->textNo = mlx_xpm_file_to_image(c->mlx_ptr, c->no, &c->textWidth, &c->textHeight);
+    c->textSo = mlx_xpm_file_to_image(c->mlx_ptr, c->so, &c->textWidth, &c->textHeight);
+    c->textEa = mlx_xpm_file_to_image(c->mlx_ptr, c->ea, &c->textWidth, &c->textHeight);
+    c->textWe = mlx_xpm_file_to_image(c->mlx_ptr, c->we, &c->textWidth, &c->textHeight);
+	c->dataNo = (int *)mlx_get_data_addr(c->textNo, &(c->bpp), &(c->sizeLine), &(c->endian));
+	c->dataSo = (int *)mlx_get_data_addr(c->textSo, &(c->bpp), &(c->sizeLine), &(c->endian));
+	c->dataEa = (int *)mlx_get_data_addr(c->textEa, &(c->bpp), &(c->sizeLine), &(c->endian));
+	c->dataWe = (int *)mlx_get_data_addr(c->textWe, &(c->bpp), &(c->sizeLine), &(c->endian));
 	ft_startRota(c);
 	ft_startMove(c);
     mlx_loop_hook(c->mlx_ptr, ft_raycasting, c);

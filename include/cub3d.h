@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:33:06 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 14:11:07 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,16 @@ typedef struct		cube_s
 	void			*mlx_ptr;
     void			*mlx_win;
 	void			*mlx_img;
+	void			*textNo;
+	void			*textSo;
+	void			*textEa;
+	void			*textWe;
 	int				*mlx_data;
+	int				*dataNo;
+	int				*dataSo;
+	int				*dataEa;
+	int				*dataWe;
+	int				*dataText;
     int				reso[2];
 	int 			sizeLine;
 	int				endian;
@@ -71,7 +80,7 @@ typedef struct		cube_s
 	double			rotaSpeed;
 	double			moveSpeed;
 	int				textWidth;
-	int				textheight;
+	int				textHeight;
 }					cube_t;
 
 void				ft_stderr(int nb, cube_t *conf);

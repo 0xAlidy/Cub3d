@@ -16,32 +16,3 @@ https://lodev.org/cgtutor/raycasting.html
 https://permadi.com/1996/05/ray-casting-tutorial-1/#INTRODUCTION
 http://forums.mediabox.fr/wiki/tutoriaux/flashplatform/affichage/3d/raycasting/theorie/11-sources
 http://asidesigned.com/project-wolf3d.html
-
-
-                        # FUNCTIONS
-
-# fenetres 
-
-void * mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title ); # creer une nouvelle fenetre
-
-int mlx_clear_window ( void *mlx_ptr, void *win_ptr ); # efface la fenetre (noir)
-
-int mlx_destroy_window ( void *mlx_ptr, void *win_ptr ); # detruit la fenetre
-
-# Dessin à l'intérieur des fenêtres
-
-int mlx_pixel_put ( void *mlx_ptr, void *win_ptr, int x, int y, int color ); #dessine un pixel défini
-
-int mlx_string_put ( void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string ); #dessine une string 
-
-# Manipulation d'images
-
-void * mlx_new_image ( void *mlx_ptr, int width, int height ); # creer une nouvelle image
-
-char * mlx_get_data_addr ( void *img_ptr, int *bits_per_pixel, int *size_line, int *endian ); # renvoie des informations sur l'image créée, permettant à un utilisateur de la modifier ultérieurement.
-
-int mlx_put_image_to_window ( void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y ); #
-
-# Gérer les événements
-
-int mlx_loop ( void *mlx_ptr ); #function infinie qui attend un evenement

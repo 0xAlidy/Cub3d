@@ -6,17 +6,13 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/06 17:06:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:33:48 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 16:35:00 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-
-
-/*  creer une data_adr pour chaque image et les free a la fin + creer une variable pour les couleurs = eviter de recalculer 
-*/
 void	ft_initRaycast(int x, cube_t *conf)
 {
 	conf->hit = 0;
@@ -72,7 +68,6 @@ void	ft_draw2(cube_t *conf)
         if (conf->map[conf->mapY][conf->mapX] == '1')
         {
             conf->hit = 1;
-           // printf("rayDirX: %f rayDirY: %f\n",conf->rayDirX,conf->rayDirY);
            if (conf->side == 0)
            {
                if (conf->mapX < conf->posX)
@@ -86,46 +81,46 @@ void	ft_draw2(cube_t *conf)
         }
     }
 }
-/*
-void    draw_text(cube_t *c)
+
+void    ft_drawText(int x, cube_t *c)
 {
-    double wallX; //where exactly the wall was hit
-    if(c->side == 0 || c->side == 1) 
+    double  wallX; //where exactly the wall was hit
+    double  texPos;
+    double  step ;
+    int     texX;
+    int     texY;
+    int     y;
+    
+    if (c->side == 0 || c->side == 1) 
         wallX = c->posY + c->perpWallDist * c->rayDirY;
     else          
         wallX = c->posX + c->perpWallDist * c->rayDirX;
-      wallX -= floor((wallX));
-      //x coordinate on the texture
-      int texX = (int)wallX * (double)c->texWidth;
-      if((c->side == 0 || c->side == 1) && c->rayDirX > 0) 
-        texX = c->texWidth - texX - 1;
-      if((c->side == 2 || c->side == 3) && c->rayDirY < 0)
-        texX = c->texWidth - texX - 1;
-
-      // TODO: an integer-only bresenham or DDA like algorithm could make the texture coordinate stepping faster
-      // How much to increase the texture coordinate per screen pixel
-      double step = 1.0 * c->texHeight / c->lineHeight;
-      // Starting texture coordinate
-      double texPos = (c->drawStart - c->reso[1] / 2 + c->lineHeight / 2) * step;
-      int y = c->drawStart;
-      if (c->side == 3)
-        c->mlx_img_text = mlx_xpm_file_to_image(c->mlx_ptr, conf->no, &c->reso[0], &c->reso[1]);
-      else if (c->side == 2)
-        c->mlx_img_text = mlx_xpm_file_to_image(c->mlx_ptr, conf->so, &c->reso[0], &c->reso[1]);
-      else if (c->side == 1)
-        c->mlx_img_text = mlx_xpm_file_to_image(c->mlx_ptr, conf->ea, &c->reso[0], &c->reso[1]);
-      else
-        c->mlx_img_text = mlx_xpm_file_to_image(c->mlx_ptr, conf->we, &c->reso[0], &c->reso[1]);
-      c->mlx_data = (int *)mlx_get_data_addr(conf->mlx_img_text, &(conf->bpp), &(conf->sizeLine), &(conf->endian));
-      while (y < c->drawEnd)
-      {
-        int texY = (int)texPos & (c->texHeight - 1);
+    wallX -= floor((wallX));
+    texX = wallX * (double)c->textWidth;
+    if ((c->side == 0 || c->side == 1) && c->rayDirX > 0) 
+        texX = c->textWidth - texX - 1;
+    if ((c->side == 2 || c->side == 3) && c->rayDirY < 0)
+        texX = c->textWidth - texX - 1;
+    step = 1.0 * c->textHeight / c->lineHeight;
+    texPos = (c->drawStart - c->reso[1] / 2 + c->lineHeight / 2) * step;
+    y = c->drawStart;
+    if (c->side == 3)
+        c->dataText = c->dataNo;
+    else if (c->side == 2)
+        c->dataText = c->dataSo;
+    else if (c->side == 1)
+        c->dataText = c->dataWe;
+    else
+        c->dataText = c->dataEa;
+    while (y < c->drawEnd)
+    {
+        texY = (int)texPos; // &(c->textHeight - 1) bit wise
         texPos += step;
-        c->color = c->mlx_data[c->texHeight * texY + texX];
-        buffer[y][x] = color;
+        c->color = c->dataText[c->textHeight * texY + texX];
+        c->mlx_data[y * c->reso[0] + x] = c->color;
           y++;
-      }
-}*/
+    }
+}
 
 void	ft_draw3(int x, cube_t *c)
 {
@@ -148,7 +143,7 @@ void	ft_draw3(int x, cube_t *c)
 		c->mlx_data[i * c->reso[0] + x] = c->colorC;
 		i++;
 	}
-	while (c->drawStart < c->drawEnd)
+	/*while (c->drawStart < c->drawEnd)
     {
         c->color = 0x0000FF; // OUEST
         if (c->side == 1)
@@ -158,8 +153,8 @@ void	ft_draw3(int x, cube_t *c)
         else if (c->side == 3)
             c->color = 0X93FF33; //vert NORD
         c->mlx_data[c->drawStart++ * c->reso[0] + x] = c->color;
-    }
-    //ft_drawText(c);
+    }*/
+   ft_drawText(x, c);
 	i = c->drawEnd;
 	while (i < c->reso[1] - 1)
 	{

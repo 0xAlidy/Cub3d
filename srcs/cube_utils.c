@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:26:57 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 15:14:02 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,11 @@
 
 int		ft_closeWin(cube_t *conf)
 {
+	mlx_destroy_image (conf->mlx_ptr, conf->textNo);
+	mlx_destroy_image (conf->mlx_ptr, conf->textSo);
+	mlx_destroy_image (conf->mlx_ptr, conf->textEa);
+	mlx_destroy_image (conf->mlx_ptr, conf->textWe);
+	mlx_destroy_image (conf->mlx_ptr, conf->mlx_img);
 	mlx_destroy_window(conf->mlx_ptr, conf->mlx_win);
 	ft_free_conf(conf);
 	exit(EXIT_SUCCESS);
@@ -67,8 +72,8 @@ cube_t	ft_init_conf(void)
 	conf.bpp = 32;
 	conf.rotaSpeed = 0.06;
 	conf.moveSpeed = 0.06;
-	conf.textWidth = 300;
-	conf.textheight = 300;
+	conf.textWidth = 400;
+	conf.textHeight = 400;
 	return (conf);
 }
 
