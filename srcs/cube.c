@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/29 02:14:26 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 15:40:57 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 15:58:32 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,6 +81,8 @@ int 	main(int gc, char **gv)
 	if (gc == 3)
 	{
 		ft_init_cube(&conf);
+		ft_startRota(&conf);
+		ft_startMove(&conf);
 		while (x < conf.reso[0])
     	{
         	ft_initRaycast(x, &conf);
@@ -89,8 +91,6 @@ int 	main(int gc, char **gv)
 			ft_draw3(x, &conf);
         	x++;
     	}
-		ft_startRota(&conf);
-		ft_startMove(&conf);
 		save_img("cube.bmp", &conf);
 	}
 	else
