@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 10:59:15 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 03:12:11 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 17:27:24 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,6 @@ void	ft_check_end_map(int fd, int res, char **line, cube_t *conf)
 			ft_stderr(5, conf);
 		free(*line);
 	}
-	
 	if (!conf->ori)
 		ft_stderr(5, conf);
 	close(fd);

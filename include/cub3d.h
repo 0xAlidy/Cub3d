@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 15:43:55 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 18:24:50 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -107,6 +107,9 @@ typedef struct		cube_s
 	double			moveSpeed;
 	int				textWidth;
 	int				textHeight;
+	double			wall_x;
+	int				tex_x;
+	int				tex_y;
 }					cube_t;
 
 void				ft_stderr(int nb, cube_t *conf);
@@ -125,16 +128,19 @@ void   				ft_parsing_all(int gc, char **gv, cube_t *conf);
 int					ft_raycasting(cube_t *conf);
 int					color(int r, int g, int b);
 int					keyhooks(cube_t *conf);
+int					ft_define_movement(int key, cube_t *conf);
+int					ft_reset_movement(int key, cube_t *conf);
 void    			ft_game(cube_t *conf);
 int					ft_raycasting(cube_t *conf);
-int					ft_closeWin(cube_t *conf);
+int					ft_close_mlx(cube_t *conf);
 void				ft_init_cube(cube_t *c);
-void				ft_initRaycast(int x, cube_t *conf);
+void				ft_init_raycast(int x, cube_t *conf);
 void				ft_draw1(cube_t *conf);
 void				ft_draw2(cube_t *conf);
 void    			ft_drawText(int x, cube_t *c);
 void				ft_draw3(int x, cube_t *c);
-void				ft_startRota(cube_t *conf);
-void				ft_startMove(cube_t *c);
+void				ft_start_rota(cube_t *conf);
+void				ft_start_move(cube_t *c);
+void				ft_create_bmp(cube_t *conf);
 
 #endif

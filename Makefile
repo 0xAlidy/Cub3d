@@ -6,7 +6,7 @@
 #    By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/02/06 17:43:02 by alidy       ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/08 17:40:53 by alidy       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,6 +19,8 @@ SRC_PATH		=		srcs
 
 SRCS_NAME		=		cube.c							\
 						cube_utils.c 					\
+						cube_bmp.c 						\
+						cube_free.c 					\
 						parsing/parsing.c 				\
 						parsing/parsing_screen_path.c 	\
 						parsing/parsing_color.c 		\

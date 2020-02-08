@@ -6,52 +6,72 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 14:10:37 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 18:28:46 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int		ft_closeWin(cube_t *conf)
+void	ft_init_raycast(int x, cube_t *conf)
 {
-	mlx_destroy_image (conf->mlx_ptr, conf->textNo);
-	mlx_destroy_image (conf->mlx_ptr, conf->textSo);
-	mlx_destroy_image (conf->mlx_ptr, conf->textEa);
-	mlx_destroy_image (conf->mlx_ptr, conf->textWe);
-	mlx_destroy_image (conf->mlx_ptr, conf->mlx_img);
-	mlx_destroy_window(conf->mlx_ptr, conf->mlx_win);
-	ft_free_conf(conf);
-	exit(EXIT_SUCCESS);
-	return (EXIT_SUCCESS);
+	conf->hit = 0;
+	conf->cameraX = 2 * x / (double)conf->reso[0] - 1;
+	conf->rayDirX = conf->dirX + conf->planeX * conf->cameraX;
+	conf->rayDirY = conf->dirY + conf->planeY * conf->cameraX;
+	conf->mapX = (int)conf->posX;
+	conf->mapY = (int)conf->posY;
+	conf->deltaDistX = fabs(1 / conf->rayDirX);
+	conf->deltaDistY = fabs(1 / conf->rayDirY);
 }
 
-void	ft_free_conf(cube_t *conf)
+int		color(int r, int g, int b)
 {
-	int i;
+	int		color;
 
-	i = 0;
-	if (conf->no)
-		free(conf->no);
-	if (conf->so)
-		free(conf->so);
-	if (conf->we)
-		free(conf->we);
-	if (conf->ea)
-		free(conf->ea);
-	if (conf->s)
-		free(conf->s);
-	if (conf->temp)
-		free(conf->temp);
-	if (conf->map)
-	{
-		while (conf->map[i])
-		{
-			free(conf->map[i]);
-			i++;
-		}
-		free(conf->map);
-	}
+	color = 0;
+	color += r * 256 * 256;
+	color += g * 256;
+	color += b;
+	return (color);
+}
+
+void	ft_init_text(cube_t *c)
+{
+	c->textNo = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->no, &c->textWidth, &c->textHeight);
+	c->textSo = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->so, &c->textWidth, &c->textHeight);
+	c->textEa = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->ea, &c->textWidth, &c->textHeight);
+	c->textWe = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->we, &c->textWidth, &c->textHeight);
+	//c->textSprite = mlx_xpm_file_to_image(c->mlx_ptr,
+		//c->s, &c->textWidth, &c->textHeight);
+	c->dataNo = (int *)mlx_get_data_addr(c->textNo,
+		&(c->bpp), &(c->sizeLine), &(c->endian));
+	c->dataSo = (int *)mlx_get_data_addr(c->textSo,
+		&(c->bpp), &(c->sizeLine), &(c->endian));
+	c->dataEa = (int *)mlx_get_data_addr(c->textEa,
+		&(c->bpp), &(c->sizeLine), &(c->endian));
+	c->dataWe = (int *)mlx_get_data_addr(c->textWe,
+		&(c->bpp), &(c->sizeLine), &(c->endian));
+	//c->dataSprite = (int *)mlx_get_data_addr(c->textSprite,
+		//&(c->bpp), &(c->sizeLine), &(c->endian));
+}
+
+void	ft_init_cube(cube_t *c)
+{
+	if ((c->mlx_ptr = mlx_init()) == NULL)
+		ft_stderr(-1, c);
+	c->mlx_img = mlx_new_image(c->mlx_ptr, c->reso[0], c->reso[1]);
+	c->mlx_win = 0;
+	c->sizeLine = c->reso[0] * 4;
+	c->mlx_data = (int *)mlx_get_data_addr(c->mlx_img,
+		&(c->bpp), &(c->sizeLine), &(c->endian));
+	c->colorF = color(c->f[0], c->f[1], c->f[2]);
+	c->colorC = color(c->c[0], c->c[1], c->c[2]);
+	ft_init_text(c);
 }
 
 cube_t	ft_init_conf(void)
@@ -75,25 +95,4 @@ cube_t	ft_init_conf(void)
 	conf.textWidth = 400;
 	conf.textHeight = 400;
 	return (conf);
-}
-
-void	ft_stderr(int nb, cube_t *conf)
-{
-	if (nb == 0)
-		ft_printf("Error\n__ERROR__ARG__\n");
-	else if (nb == 1)
-		ft_printf("Error\n__ERROR__CONF__\n");
-	else if (nb == 2)
-		ft_printf("Error\n__ERROR__RESOLUTION__\n");
-	else if (nb == 3)
-		ft_printf("Error\n__ERROR__TEXTURE__\n");
-	else if (nb == 4)
-		ft_printf("Error\n__ERROR__COLOR__\n");
-	else if (nb == 5)
-		ft_printf("Error\n__ERROR__MAP__\n");
-	else
-		ft_printf("Error\n");
-	if (conf)
-		ft_free_conf(conf);
-	exit(EXIT_FAILURE);
 }
