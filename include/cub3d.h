@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 14:11:07 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 15:43:55 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,30 @@
 #include "../minilibx/mlx.h"
 # include <math.h>
 
+typedef struct 		hf_s
+{
+	unsigned char	type[2];
+	int 			size;
+	short 			reserved1;
+	short 			reserved2;
+	unsigned int	offBits;
+}					hf_t;
+
+typedef struct 		hi_s
+{
+	unsigned int 	sizeH;
+	unsigned int 	width;
+	unsigned int 	height;
+	short int		planes;
+	short int		bitCount;
+	unsigned int 	compression;
+	unsigned int	sizeImage;
+	unsigned int	xPelsPerMeter;
+	unsigned int	yPelsPerMeter;
+	unsigned int	clrUsed;
+	unsigned int	clrImportant;
+}					hi_t;
+
 typedef struct		cube_s
 {
 	void			*mlx_ptr;
@@ -26,11 +50,13 @@ typedef struct		cube_s
 	void			*textSo;
 	void			*textEa;
 	void			*textWe;
+	void			*textSprite;
 	int				*mlx_data;
 	int				*dataNo;
 	int				*dataSo;
 	int				*dataEa;
 	int				*dataWe;
+	int				*dataSprite;
 	int				*dataText;
     int				reso[2];
 	int 			sizeLine;
@@ -102,5 +128,13 @@ int					keyhooks(cube_t *conf);
 void    			ft_game(cube_t *conf);
 int					ft_raycasting(cube_t *conf);
 int					ft_closeWin(cube_t *conf);
+void				ft_init_cube(cube_t *c);
+void				ft_initRaycast(int x, cube_t *conf);
+void				ft_draw1(cube_t *conf);
+void				ft_draw2(cube_t *conf);
+void    			ft_drawText(int x, cube_t *c);
+void				ft_draw3(int x, cube_t *c);
+void				ft_startRota(cube_t *conf);
+void				ft_startMove(cube_t *c);
 
 #endif

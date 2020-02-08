@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/06 17:35:16 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 15:23:45 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 14:10:07 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -107,13 +107,11 @@ void	ft_startMove(cube_t *c)
 	}
 }
 
-void    ft_game(cube_t *c)
+void	ft_init_cube(cube_t *c)
 {
-    if ((c->mlx_ptr = mlx_init()) == NULL)
+	if ((c->mlx_ptr = mlx_init()) == NULL)
         ft_stderr(-1, c);
-    if ((c->mlx_win = mlx_new_window(c->mlx_ptr, c->reso[0], c->reso[1], "Cub3D")) == NULL)
-        ft_stderr(-1, c);
-    c->mlx_img = mlx_new_image(c->mlx_ptr, c->reso[0], c->reso[1]);
+	c->mlx_img = mlx_new_image(c->mlx_ptr, c->reso[0], c->reso[1]);
     c->sizeLine = c->reso[0] * 4;
     c->mlx_data = (int *)mlx_get_data_addr(c->mlx_img, &(c->bpp), &(c->sizeLine), &(c->endian));
 	c->colorF = color(c->f[0], c->f[1], c->f[2]);
@@ -122,10 +120,19 @@ void    ft_game(cube_t *c)
     c->textSo = mlx_xpm_file_to_image(c->mlx_ptr, c->so, &c->textWidth, &c->textHeight);
     c->textEa = mlx_xpm_file_to_image(c->mlx_ptr, c->ea, &c->textWidth, &c->textHeight);
     c->textWe = mlx_xpm_file_to_image(c->mlx_ptr, c->we, &c->textWidth, &c->textHeight);
+	//c->textSprite = mlx_xpm_file_to_image(c->mlx_ptr, c->s, &c->textWidth, &c->textHeight);
 	c->dataNo = (int *)mlx_get_data_addr(c->textNo, &(c->bpp), &(c->sizeLine), &(c->endian));
 	c->dataSo = (int *)mlx_get_data_addr(c->textSo, &(c->bpp), &(c->sizeLine), &(c->endian));
 	c->dataEa = (int *)mlx_get_data_addr(c->textEa, &(c->bpp), &(c->sizeLine), &(c->endian));
 	c->dataWe = (int *)mlx_get_data_addr(c->textWe, &(c->bpp), &(c->sizeLine), &(c->endian));
+	//c->dataSprite = (int *)mlx_get_data_addr(c->textSprite, &(c->bpp), &(c->sizeLine), &(c->endian));
+}
+
+void    ft_game(cube_t *c)
+{
+	ft_init_cube(c);
+	if ((c->mlx_win = mlx_new_window(c->mlx_ptr, c->reso[0], c->reso[1], "Cub3D")) == NULL)
+        ft_stderr(-1, c);
 	ft_startRota(c);
 	ft_startMove(c);
     mlx_loop_hook(c->mlx_ptr, ft_raycasting, c);

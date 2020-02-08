@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/06 17:06:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 16:35:00 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 17:32:59 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,7 +65,7 @@ void	ft_draw2(cube_t *conf)
             conf->mapY += conf->stepY;
             conf->side = 2;
         }
-        if (conf->map[conf->mapY][conf->mapX] == '1')
+        if (conf->map[conf->mapY][conf->mapX] == '1' )
         {
             conf->hit = 1;
            if (conf->side == 0)
@@ -84,7 +84,7 @@ void	ft_draw2(cube_t *conf)
 
 void    ft_drawText(int x, cube_t *c)
 {
-    double  wallX; //where exactly the wall was hit
+    double  wallX;
     double  texPos;
     double  step ;
     int     texX;
@@ -143,22 +143,12 @@ void	ft_draw3(int x, cube_t *c)
 		c->mlx_data[i * c->reso[0] + x] = c->colorC;
 		i++;
 	}
-	/*while (c->drawStart < c->drawEnd)
-    {
-        c->color = 0x0000FF; // OUEST
-        if (c->side == 1)
-            c->color = c->color / 2; // EST
-        else if (c->side == 2)
-            c->color = 0xFF3333; // rouge SUD
-        else if (c->side == 3)
-            c->color = 0X93FF33; //vert NORD
-        c->mlx_data[c->drawStart++ * c->reso[0] + x] = c->color;
-    }*/
    ft_drawText(x, c);
-	i = c->drawEnd;
+    i = c->drawEnd;
 	while (i < c->reso[1] - 1)
 	{
 		c->mlx_data[i * c->reso[0] + x] = c->colorF;
+
 		i++;
     }
 }
