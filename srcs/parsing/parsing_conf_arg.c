@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:23:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 16:41:32 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 11:55:48 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,7 @@ int		ft_parsing_arg(int gc, char **gv)
 	return (fd);
 }
 
-int		ft_check_conf(cube_t *conf)
+int		ft_check_conf(t_cube *conf)
 {
 	if (conf->no && conf->so && conf->we && conf->ea && conf->s
 	&& conf->f[0] != -1 && conf->c[0] != -1 && conf->reso[0])
@@ -45,7 +45,7 @@ int		ft_check_conf(cube_t *conf)
 	return (0);
 }
 
-int		ft_get_id(char *str, cube_t *conf)
+int		ft_get_id(char *str, t_cube *conf)
 {
 	int		i;
 	int		save;
@@ -67,7 +67,7 @@ int		ft_get_id(char *str, cube_t *conf)
 	return (i);
 }
 
-void	ft_parsing_conf(char *line, cube_t *conf, int i)
+void	ft_parsing_conf(char *line, t_cube *conf, int i)
 {
 	if (!ft_strncmp(conf->temp, "NO", 2))
 		ft_parsing_path(line, conf, i, 1);

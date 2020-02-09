@@ -6,23 +6,23 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 18:28:46 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 12:08:33 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	ft_init_raycast(int x, cube_t *conf)
+void	ft_init_raycast(int x, t_cube *conf)
 {
 	conf->hit = 0;
-	conf->cameraX = 2 * x / (double)conf->reso[0] - 1;
-	conf->rayDirX = conf->dirX + conf->planeX * conf->cameraX;
-	conf->rayDirY = conf->dirY + conf->planeY * conf->cameraX;
-	conf->mapX = (int)conf->posX;
-	conf->mapY = (int)conf->posY;
-	conf->deltaDistX = fabs(1 / conf->rayDirX);
-	conf->deltaDistY = fabs(1 / conf->rayDirY);
+	conf->camera = 2 * x / (double)conf->reso[0] - 1;
+	conf->rdir_x = conf->dir_x + conf->plane_x * conf->camera;
+	conf->rdir_y = conf->dir_y + conf->plane_y * conf->camera;
+	conf->map_x = (int)conf->pos_x;
+	conf->map_y = (int)conf->pos_y;
+	conf->ddist_x = fabs(1 / conf->rdir_x);
+	conf->ddist_y = fabs(1 / conf->rdir_y);
 }
 
 int		color(int r, int g, int b)
@@ -36,47 +36,47 @@ int		color(int r, int g, int b)
 	return (color);
 }
 
-void	ft_init_text(cube_t *c)
+void	ft_init_text(t_cube *c)
 {
-	c->textNo = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->no, &c->textWidth, &c->textHeight);
-	c->textSo = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->so, &c->textWidth, &c->textHeight);
-	c->textEa = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->ea, &c->textWidth, &c->textHeight);
-	c->textWe = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->we, &c->textWidth, &c->textHeight);
-	//c->textSprite = mlx_xpm_file_to_image(c->mlx_ptr,
-		//c->s, &c->textWidth, &c->textHeight);
-	c->dataNo = (int *)mlx_get_data_addr(c->textNo,
-		&(c->bpp), &(c->sizeLine), &(c->endian));
-	c->dataSo = (int *)mlx_get_data_addr(c->textSo,
-		&(c->bpp), &(c->sizeLine), &(c->endian));
-	c->dataEa = (int *)mlx_get_data_addr(c->textEa,
-		&(c->bpp), &(c->sizeLine), &(c->endian));
-	c->dataWe = (int *)mlx_get_data_addr(c->textWe,
-		&(c->bpp), &(c->sizeLine), &(c->endian));
-	//c->dataSprite = (int *)mlx_get_data_addr(c->textSprite,
-		//&(c->bpp), &(c->sizeLine), &(c->endian));
+	c->text_no = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->no, &c->text_width, &c->text_height);
+	c->text_so = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->so, &c->text_width, &c->text_height);
+	c->text_ea = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->ea, &c->text_width, &c->text_height);
+	c->text_we = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->we, &c->text_width, &c->text_height);
+	//c->text_sprite = mlx_xpm_file_to_image(c->mlx_ptr,
+		//c->s, &c->text_width, &c->text_height);
+	c->data_no = (int *)mlx_get_data_addr(c->text_no,
+		&(c->bpp), &(c->size_line), &(c->endian));
+	c->data_so = (int *)mlx_get_data_addr(c->text_so,
+		&(c->bpp), &(c->size_line), &(c->endian));
+	c->data_ea = (int *)mlx_get_data_addr(c->text_ea,
+		&(c->bpp), &(c->size_line), &(c->endian));
+	c->data_we = (int *)mlx_get_data_addr(c->text_we,
+		&(c->bpp), &(c->size_line), &(c->endian));
+	//c->data_sprite = (int *)mlx_get_data_addr(c->text_sprite,
+		//&(c->bpp), &(c->size_line), &(c->endian));
 }
 
-void	ft_init_cube(cube_t *c)
+void	ft_init_cube(t_cube *c)
 {
 	if ((c->mlx_ptr = mlx_init()) == NULL)
 		ft_stderr(-1, c);
 	c->mlx_img = mlx_new_image(c->mlx_ptr, c->reso[0], c->reso[1]);
 	c->mlx_win = 0;
-	c->sizeLine = c->reso[0] * 4;
+	c->size_line = c->reso[0] * 4;
 	c->mlx_data = (int *)mlx_get_data_addr(c->mlx_img,
-		&(c->bpp), &(c->sizeLine), &(c->endian));
-	c->colorF = color(c->f[0], c->f[1], c->f[2]);
-	c->colorC = color(c->c[0], c->c[1], c->c[2]);
+		&(c->bpp), &(c->size_line), &(c->endian));
+	c->color_f = color(c->f[0], c->f[1], c->f[2]);
+	c->color_c = color(c->c[0], c->c[1], c->c[2]);
 	ft_init_text(c);
 }
 
-cube_t	ft_init_conf(void)
+t_cube	ft_init_conf(void)
 {
-	cube_t	conf;
+	t_cube	conf;
 
 	conf.f[0] = -1;
 	conf.f[1] = -1;
@@ -85,14 +85,14 @@ cube_t	ft_init_conf(void)
 	conf.c[1] = -1;
 	conf.c[2] = -1;
 	conf.endian = 1;
-	conf.dirX = 0;
-	conf.dirY = -1;
-	conf.planeX = 0.66;
-	conf.planeY = 0;
+	conf.dir_x = 0;
+	conf.dir_y = -1;
+	conf.plane_x = 0.66;
+	conf.plane_y = 0;
 	conf.bpp = 32;
-	conf.rotaSpeed = 0.06;
-	conf.moveSpeed = 0.06;
-	conf.textWidth = 400;
-	conf.textHeight = 400;
+	conf.rota_s = 0.06;
+	conf.move_s = 0.06;
+	conf.text_width = 400;
+	conf.text_height = 400;
 	return (conf);
 }

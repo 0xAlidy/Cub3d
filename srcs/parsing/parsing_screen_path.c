@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:17:29 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 09:55:05 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 11:55:48 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,7 @@ int		ft_util_path(char *line, int *i)
 	return (save);
 }
 
-void	ft_parsing_path(char *line, cube_t *conf, int i, int nb)
+void	ft_parsing_path(char *line, t_cube *conf, int i, int nb)
 {
 	int		save;
 	char	*res;
@@ -64,7 +64,7 @@ void	ft_parsing_path(char *line, cube_t *conf, int i, int nb)
 	}
 }
 
-void	ft_test_screen(int i, char *line, cube_t *conf)
+void	ft_test_screen(int i, char *line, t_cube *conf)
 {
 	int ok;
 	int cpt;
@@ -89,7 +89,7 @@ void	ft_test_screen(int i, char *line, cube_t *conf)
 		ft_stderr(2, conf);
 }
 
-void	ft_parsing_screen(char *line, cube_t *conf, int i)
+void	ft_parsing_screen(char *line, t_cube *conf, int i)
 {
 	int	res;
 

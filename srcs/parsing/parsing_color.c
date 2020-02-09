@@ -6,14 +6,14 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:21:32 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 16:51:42 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 11:55:48 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	ft_fill_rgb(int nb, cube_t *conf, int num, int cpt)
+void	ft_fill_rgb(int nb, t_cube *conf, int num, int cpt)
 {
 	if (nb < 0 || nb > 255)
 		ft_stderr(4, conf);
@@ -25,7 +25,7 @@ void	ft_fill_rgb(int nb, cube_t *conf, int num, int cpt)
 		ft_stderr(4, conf);
 }
 
-void	ft_test_color(int i, char *str, cube_t *conf)
+void	ft_test_color(int i, char *str, t_cube *conf)
 {
 	int cpt;
 	int check;
@@ -54,7 +54,7 @@ void	ft_test_color(int i, char *str, cube_t *conf)
 		ft_stderr(4, conf);
 }
 
-void	ft_parsing_color(char *line, cube_t *conf, int i, int nb)
+void	ft_parsing_color(char *line, t_cube *conf, int i, int nb)
 {
 	int		save;
 	int		res;

@@ -6,98 +6,98 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/06 16:50:07 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 17:46:54 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 12:08:01 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	up_move(cube_t *conf)
+void	up_move(t_cube *conf)
 {
 	int x;
 	int y;
 
-	x = (int)(conf->posX + conf->dirX * conf->moveSpeed);
-	y = (int)(conf->posY + conf->dirY * conf->moveSpeed);
-	if (conf->keyUp == 1 && conf->keyDown == 0)
+	x = (int)(conf->pos_x + conf->dir_x * conf->move_s);
+	y = (int)(conf->pos_y + conf->dir_y * conf->move_s);
+	if (conf->k_up == 1 && conf->k_down == 0)
 	{
 		if (conf->map[y][x] == '0')
 		{
-			conf->posX += conf->dirX * conf->moveSpeed;
-			conf->posY += conf->dirY * conf->moveSpeed;
+			conf->pos_x += conf->dir_x * conf->move_s;
+			conf->pos_y += conf->dir_y * conf->move_s;
 		}
 	}
 }
 
-void	down_move(cube_t *conf)
+void	down_move(t_cube *conf)
 {
 	int x;
 	int y;
 
-	x = (int)(conf->posX - conf->dirX * conf->moveSpeed);
-	y = (int)(conf->posY - conf->dirY * conf->moveSpeed);
-	if (conf->keyDown == 1 && conf->keyUp == 0)
+	x = (int)(conf->pos_x - conf->dir_x * conf->move_s);
+	y = (int)(conf->pos_y - conf->dir_y * conf->move_s);
+	if (conf->k_down == 1 && conf->k_up == 0)
 	{
 		if (conf->map[y][x] == '0')
 		{
-			conf->posX -= conf->dirX * conf->moveSpeed;
-			conf->posY -= conf->dirY * conf->moveSpeed;
+			conf->pos_x -= conf->dir_x * conf->move_s;
+			conf->pos_y -= conf->dir_y * conf->move_s;
 		}
 	}
 }
 
-void	right_move(cube_t *conf)
+void	right_move(t_cube *conf)
 {
 	float old_dir_x;
 	float old_plane_x;
 
-	old_dir_x = conf->dirX;
-	old_plane_x = conf->planeX;
-	if (conf->keyRight == 1 && conf->keyLeft == 0)
+	old_dir_x = conf->dir_x;
+	old_plane_x = conf->plane_x;
+	if (conf->k_right == 1 && conf->k_left == 0)
 	{
-		conf->dirX = conf->dirX * cos(-conf->rotaSpeed) -
-			conf->dirY * sin(-conf->rotaSpeed);
-		conf->dirY = old_dir_x * sin(-conf->rotaSpeed) +
-			conf->dirY * cos(-conf->rotaSpeed);
-		conf->planeX = conf->planeX * cos(-conf->rotaSpeed) -
-			conf->planeY * sin(-conf->rotaSpeed);
-		conf->planeY = old_plane_x * sin(-conf->rotaSpeed) +
-			conf->planeY * cos(-conf->rotaSpeed);
+		conf->dir_x = conf->dir_x * cos(-conf->rota_s) -
+			conf->dir_y * sin(-conf->rota_s);
+		conf->dir_y = old_dir_x * sin(-conf->rota_s) +
+			conf->dir_y * cos(-conf->rota_s);
+		conf->plane_x = conf->plane_x * cos(-conf->rota_s) -
+			conf->plane_y * sin(-conf->rota_s);
+		conf->plane_y = old_plane_x * sin(-conf->rota_s) +
+			conf->plane_y * cos(-conf->rota_s);
 	}
 }
 
-void	left_move(cube_t *conf)
+void	left_move(t_cube *conf)
 {
 	float old_dir_x;
 	float old_plane_x;
 
-	old_dir_x = conf->dirX;
-	old_plane_x = conf->planeX;
-	if (conf->keyLeft == 1 && conf->keyRight == 0)
+	old_dir_x = conf->dir_x;
+	old_plane_x = conf->plane_x;
+	if (conf->k_left == 1 && conf->k_right == 0)
 	{
-		old_dir_x = conf->dirX;
-		conf->dirX = conf->dirX * cos(conf->rotaSpeed)
-		- conf->dirY * sin(conf->rotaSpeed);
-		conf->dirY = old_dir_x * sin(conf->rotaSpeed) +
-			conf->dirY * cos(conf->rotaSpeed);
-		old_plane_x = conf->planeX;
-		conf->planeX = conf->planeX * cos(conf->rotaSpeed)
-		- conf->planeY * sin(conf->rotaSpeed);
-		conf->planeY = old_plane_x * sin(conf->rotaSpeed) +
-			conf->planeY * cos(conf->rotaSpeed);
+		old_dir_x = conf->dir_x;
+		conf->dir_x = conf->dir_x * cos(conf->rota_s)
+		- conf->dir_y * sin(conf->rota_s);
+		conf->dir_y = old_dir_x * sin(conf->rota_s) +
+			conf->dir_y * cos(conf->rota_s);
+		old_plane_x = conf->plane_x;
+		conf->plane_x = conf->plane_x * cos(conf->rota_s)
+		- conf->plane_y * sin(conf->rota_s);
+		conf->plane_y = old_plane_x * sin(conf->rota_s) +
+			conf->plane_y * cos(conf->rota_s);
 	}
 }
 
-int		keyhooks(cube_t *conf)
+int		keyhooks(t_cube *conf)
 {
-	if (conf->keyUp == 1)
+	if (conf->k_up == 1)
 		up_move(conf);
-	if (conf->keyDown == 1)
+	if (conf->k_down == 1)
 		down_move(conf);
-	if (conf->keyLeft == 1)
+	if (conf->k_left == 1)
 		left_move(conf);
-	if (conf->keyRight == 1)
+	if (conf->k_right == 1)
 		right_move(conf);
 	return (0);
 }

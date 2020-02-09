@@ -6,14 +6,14 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 10:59:15 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 17:27:24 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 12:02:54 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	ft_check_end_map(int fd, int res, char **line, cube_t *conf)
+void	ft_check_end_map(int fd, int res, char **line, t_cube *conf)
 {
 	int i;
 
@@ -30,7 +30,7 @@ void	ft_check_end_map(int fd, int res, char **line, cube_t *conf)
 	close(fd);
 }
 
-void	ft_parsing_config(char **line, int fd, cube_t *conf, int *res)
+void	ft_parsing_config(char **line, int fd, t_cube *conf, int *res)
 {
 	int id;
 
@@ -51,7 +51,7 @@ void	ft_parsing_config(char **line, int fd, cube_t *conf, int *res)
 	}
 }
 
-int		ft_check_one(cube_t *conf, int x, int y)
+int		ft_check_one(t_cube *conf, int x, int y)
 {
 	int i;
 
@@ -72,7 +72,7 @@ int		ft_check_one(cube_t *conf, int x, int y)
 	return (0);
 }
 
-void	ft_fill_map(cube_t *conf)
+void	ft_fill_map(t_cube *conf)
 {
 	int x;
 	int y;
@@ -91,17 +91,17 @@ void	ft_fill_map(cube_t *conf)
 			x++;
 		}
 		if (y == 0)
-			conf->lenX = x;
-		else if (x != conf->lenX)
+			conf->len_x = x;
+		else if (x != conf->len_x)
 			ft_stderr(5, conf);
 		x = 0;
 		y++;
 	}
-	if (y < 3 || conf->lenX < 3 || ft_check_one(conf, conf->lenX - 1, y - 1))
+	if (y < 3 || conf->len_x < 3 || ft_check_one(conf, conf->len_x - 1, y - 1))
 		ft_stderr(5, conf);
 }
 
-void	ft_parsing_all(int gc, char **gv, cube_t *conf)
+void	ft_parsing_all(int gc, char **gv, t_cube *conf)
 {
 	char	*line;
 	int		res;

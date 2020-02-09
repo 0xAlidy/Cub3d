@@ -6,20 +6,20 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/08 17:25:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 17:29:03 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 11:58:51 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int		ft_close_mlx(cube_t *conf)
+int		ft_close_mlx(t_cube *conf)
 {
-	//mlx_destroy_image(conf->mlx_ptr, conf->textSprite);
-	mlx_destroy_image(conf->mlx_ptr, conf->textNo);
-	mlx_destroy_image(conf->mlx_ptr, conf->textSo);
-	mlx_destroy_image(conf->mlx_ptr, conf->textEa);
-	mlx_destroy_image(conf->mlx_ptr, conf->textWe);
+	//mlx_destroy_image(conf->mlx_ptr, conf->text_sprite);
+	mlx_destroy_image(conf->mlx_ptr, conf->text_no);
+	mlx_destroy_image(conf->mlx_ptr, conf->text_so);
+	mlx_destroy_image(conf->mlx_ptr, conf->text_ea);
+	mlx_destroy_image(conf->mlx_ptr, conf->text_we);
 	mlx_destroy_image(conf->mlx_ptr, conf->mlx_img);
 	if (conf->mlx_win)
 		mlx_destroy_window(conf->mlx_ptr, conf->mlx_win);
@@ -28,7 +28,7 @@ int		ft_close_mlx(cube_t *conf)
 	return (EXIT_SUCCESS);
 }
 
-void	ft_free_conf(cube_t *conf)
+void	ft_free_conf(t_cube *conf)
 {
 	int i;
 
@@ -56,7 +56,7 @@ void	ft_free_conf(cube_t *conf)
 	}
 }
 
-void	ft_stderr(int nb, cube_t *conf)
+void	ft_stderr(int nb, t_cube *conf)
 {
 	if (nb == 0)
 		ft_printf("Error\n__ERROR__ARG__\n");

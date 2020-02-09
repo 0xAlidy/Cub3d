@@ -6,14 +6,14 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/08 16:52:54 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 18:30:39 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 11:55:48 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	ft_game(cube_t *conf)
+void	ft_game(t_cube *conf)
 {
 	ft_init_cube(conf);
 	if ((conf->mlx_win = mlx_new_window(conf->mlx_ptr,
@@ -28,7 +28,7 @@ void	ft_game(cube_t *conf)
 	mlx_loop(conf->mlx_ptr);
 }
 
-int		ft_raycasting(cube_t *conf)
+int		ft_raycasting(t_cube *conf)
 {
 	int x;
 
@@ -49,7 +49,7 @@ int		ft_raycasting(cube_t *conf)
 
 int		main(int gc, char **gv)
 {
-	cube_t		conf;
+	t_cube		conf;
 
 	conf = ft_init_conf();
 	ft_parsing_all(gc, gv, &conf);
