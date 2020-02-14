@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 09:21:32 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 18:05:34 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/14 22:05:32 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	ft_parsing_color(char *line, t_cube *conf, int i, int nb)
 		while (line[i] == ' ')
 			i++;
 		if (line[i] == ',')
+			i++;
+		while (line[i] == ' ')
 			i++;
 		res = atoi(line + save);
 		cpt++;
