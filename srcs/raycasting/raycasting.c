@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/06 17:06:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 12:08:33 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 02:41:14 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ void	ft_draw1(t_cube *conf)
 	}
 }
 
-void	ft_draw2(t_cube *conf)
+void	ft_draw2(t_cube *conf, t_sprite **lst)
 {
 	while (conf->hit == 0)
 	{
@@ -58,9 +58,11 @@ void	ft_draw2(t_cube *conf)
 			conf->hit = 1;
 			if (conf->side == 0 && conf->map_x < conf->pos_x)
 				conf->side = 1;
-			else if (conf->side != 0 && conf->map_y < conf->pos_y)
+			else if (conf->side == 2 && conf->map_y < conf->pos_y) // != 0
 				conf->side = 3;
 		}
+		else if (conf->map[conf->map_y][conf->map_x] == '2')
+			ft_add_lst_sprite(conf->map_x, conf->map_y, lst);
 	}
 }
 

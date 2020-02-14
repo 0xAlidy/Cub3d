@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/08 16:52:54 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 11:55:48 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 21:38:35 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,18 +30,21 @@ void	ft_game(t_cube *conf)
 
 int		ft_raycasting(t_cube *conf)
 {
-	int x;
+	int 		x;
+	t_sprite 	*lst;
 
 	x = 0;
+	lst = 0;
 	mlx_clear_window(conf->mlx_ptr, conf->mlx_win);
 	while (x < conf->reso[0])
 	{
 		ft_init_raycast(x, conf);
 		ft_draw1(conf);
-		ft_draw2(conf);
+		ft_draw2(conf, &lst);
 		ft_draw3(x, conf);
 		x++;
 	}
+	ft_draw_sprite(conf, lst);
 	keyhooks(conf);
 	mlx_put_image_to_window(conf->mlx_ptr, conf->mlx_win, conf->mlx_img, 0, 0);
 	return (0);

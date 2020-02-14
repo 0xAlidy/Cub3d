@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/08 17:25:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 11:58:51 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/11 22:57:35 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 int		ft_close_mlx(t_cube *conf)
 {
-	//mlx_destroy_image(conf->mlx_ptr, conf->text_sprite);
+	mlx_destroy_image(conf->mlx_ptr, conf->text_sprite);
 	mlx_destroy_image(conf->mlx_ptr, conf->text_no);
 	mlx_destroy_image(conf->mlx_ptr, conf->text_so);
 	mlx_destroy_image(conf->mlx_ptr, conf->text_ea);

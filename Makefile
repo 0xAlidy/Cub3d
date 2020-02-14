@@ -6,7 +6,7 @@
 #    By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/02/08 17:40:53 by alidy       ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/09 14:05:24 by alidy       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -28,7 +28,9 @@ SRCS_NAME		=		cube.c							\
 						parsing/parsing_conf_arg.c 		\
 						raycasting/ray_movement.c 		\
 						raycasting/ray_cube.c 			\
+						raycasting/ray_sprite.c 		\
 						raycasting/raycasting.c 		\
+						
 
 OBJS			=		${SRCS:.c=.o}
 

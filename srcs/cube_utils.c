@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 09:13:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 12:08:33 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 21:50:56 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,16 +38,18 @@ int		color(int r, int g, int b)
 
 void	ft_init_text(t_cube *c)
 {
-	c->text_no = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->no, &c->text_width, &c->text_height);
 	c->text_so = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->so, &c->text_width, &c->text_height);
+		c->so, &(c->text_width), &(c->text_height));
+	c->text_no = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->no, &(c->text_width), &(c->text_height));
 	c->text_ea = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->ea, &c->text_width, &c->text_height);
+		c->ea, &(c->text_width), &(c->text_height));
 	c->text_we = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->we, &c->text_width, &c->text_height);
-	//c->text_sprite = mlx_xpm_file_to_image(c->mlx_ptr,
-		//c->s, &c->text_width, &c->text_height);
+		c->we, &(c->text_width), &(c->text_height));
+	c->text_sprite = mlx_xpm_file_to_image(c->mlx_ptr,
+		c->s, &(c->text_width), &(c->text_height));	
+	c->data_sprite = (int *)mlx_get_data_addr(c->text_sprite,
+		&(c->bpp), &(c->size_line), &(c->endian));
 	c->data_no = (int *)mlx_get_data_addr(c->text_no,
 		&(c->bpp), &(c->size_line), &(c->endian));
 	c->data_so = (int *)mlx_get_data_addr(c->text_so,
@@ -56,8 +58,6 @@ void	ft_init_text(t_cube *c)
 		&(c->bpp), &(c->size_line), &(c->endian));
 	c->data_we = (int *)mlx_get_data_addr(c->text_we,
 		&(c->bpp), &(c->size_line), &(c->endian));
-	//c->data_sprite = (int *)mlx_get_data_addr(c->text_sprite,
-		//&(c->bpp), &(c->size_line), &(c->endian));
 }
 
 void	ft_init_cube(t_cube *c)
@@ -90,8 +90,8 @@ t_cube	ft_init_conf(void)
 	conf.plane_x = 0.66;
 	conf.plane_y = 0;
 	conf.bpp = 32;
-	conf.rota_s = 0.06;
-	conf.move_s = 0.06;
+	conf.rota_s = 0.03;
+	conf.move_s = 0.03;
 	conf.text_width = 400;
 	conf.text_height = 400;
 	return (conf);

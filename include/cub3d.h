@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 12:12:14 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 21:38:09 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,13 @@
 # include "../libft/includes/ft_printf.h"
 # include "../minilibx/mlx.h"
 # include <math.h>
+
+typedef struct  	s_sprite
+{
+    int         	x;
+    int         	y;
+    struct s_sprite	*next;
+}               	t_sprite;
 
 typedef struct		s_hfile
 {
@@ -137,11 +144,13 @@ int					ft_close_mlx(t_cube *conf);
 void				ft_init_cube(t_cube *c);
 void				ft_init_raycast(int x, t_cube *conf);
 void				ft_draw1(t_cube *conf);
-void				ft_draw2(t_cube *conf);
+void				ft_draw2(t_cube *conf, t_sprite **lst);
 void				ft_draw_text(int x, t_cube *c);
 void				ft_draw3(int x, t_cube *c);
 void				ft_start_rota(t_cube *conf);
 void				ft_start_move(t_cube *c);
 void				ft_create_bmp(t_cube *conf);
+void				ft_draw_sprite(t_cube *c, t_sprite *lst);
+int     			ft_add_lst_sprite(int x, int y, t_sprite **lst);
 
 #endif

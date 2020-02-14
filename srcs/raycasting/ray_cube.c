@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/06 17:35:16 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 12:07:37 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 22:40:18 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,12 +65,8 @@ void	ft_start_rota(t_cube *conf)
 
 void	ft_change_start(t_cube *conf, int x, int y)
 {
-	if (conf->pos_x == 1 && conf->pos_y == 1)
-	{
-		conf->pos_x += 0.0001;
-		conf->pos_y += 0.0001;
-	}
-	else if (conf->pos_x == 1 && conf->pos_y == y - 2)
+	
+	if (conf->pos_x == 1 && conf->pos_y == y - 2)
 	{
 		conf->pos_x += 0.0001;
 		conf->pos_y += 0.9999;
@@ -84,6 +80,11 @@ void	ft_change_start(t_cube *conf, int x, int y)
 	{
 		conf->pos_x += 0.9999;
 		conf->pos_y += 0.9999;
+	}
+	else
+	{
+		conf->pos_x += 0.0001;
+		conf->pos_y += 0.0001;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/08 16:58:08 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 11:55:48 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 21:38:32 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,9 +71,11 @@ void	ft_init_bmp(char *filename, t_cube *conf)
 
 void	ft_create_bmp(t_cube *conf)
 {
-	int	x;
+	int			x;
+	t_sprite 	*lst;
 
 	x = 0;
+	lst = 0;
 	ft_init_cube(conf);
 	ft_start_rota(conf);
 	ft_start_move(conf);
@@ -81,9 +83,10 @@ void	ft_create_bmp(t_cube *conf)
 	{
 		ft_init_raycast(x, conf);
 		ft_draw1(conf);
-		ft_draw2(conf);
+		ft_draw2(conf, &lst);
 		ft_draw3(x, conf);
 		x++;
 	}
+	ft_draw_sprite(conf, lst);
 	ft_init_bmp("cube.bmp", conf);
 }
