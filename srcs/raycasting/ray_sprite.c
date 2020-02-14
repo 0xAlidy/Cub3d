@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 17:10:00 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 20:17:48 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/14 20:24:32 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,8 @@ void	ft_draw2_sprite(t_cube *c, double *buf)
 			{
 				d = (y) * 256 - c->reso[1] * 128 + c->s_height * 128;
 				c->s_tex_y = ((d * c->text_height) / c->s_height) / 256;
-				c->color = c->data_sprite[c->text_width * c->s_tex_y + c->s_tex_x];
+				c->color = c->data_sprite[c->text_width
+					* c->s_tex_y + c->s_tex_x];
 				if (c->color)
 					c->mlx_data[y * c->reso[0] + x] = c->color;
 				y++;
