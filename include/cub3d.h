@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   cub3d.h                                          .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/01/18 10:35:44 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 21:38:09 by alidy       ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 10:35:44 by alidy             #+#    #+#             */
+/*   Updated: 2020/02/14 20:16:43 by alidy            ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
@@ -18,12 +17,12 @@
 # include "../minilibx/mlx.h"
 # include <math.h>
 
-typedef struct  	s_sprite
+typedef struct		s_sprite
 {
-    int         	x;
-    int         	y;
-    struct s_sprite	*next;
-}               	t_sprite;
+	int				x;
+	int				y;
+	struct s_sprite	*next;
+}					t_sprite;
 
 typedef struct		s_hfile
 {
@@ -118,6 +117,21 @@ typedef struct		s_cube
 	double			wall_x;
 	int				tex_x;
 	int				tex_y;
+	double			s_x;
+	double			s_y;
+	double			inv_det;
+	double			tsf_x;
+	double			tsf_y;
+	int				s_screen_x;
+	int				s_height;
+	int				s_width;
+	int				draw_s_y;
+	int				draw_e_y;
+	int				draw_s_x;
+	int				draw_e_x;
+	int				s_tex_x;
+	int				s_tex_y;
+	t_sprite		*save;
 }					t_cube;
 
 void				ft_stderr(int nb, t_cube *conf);
@@ -146,11 +160,11 @@ void				ft_init_raycast(int x, t_cube *conf);
 void				ft_draw1(t_cube *conf);
 void				ft_draw2(t_cube *conf, t_sprite **lst);
 void				ft_draw_text(int x, t_cube *c);
-void				ft_draw3(int x, t_cube *c);
+void				ft_draw3(int x, t_cube *c, double *buffer);
 void				ft_start_rota(t_cube *conf);
 void				ft_start_move(t_cube *c);
 void				ft_create_bmp(t_cube *conf);
-void				ft_draw_sprite(t_cube *c, t_sprite *lst);
-int     			ft_add_lst_sprite(int x, int y, t_sprite **lst);
+void				ft_draw_sprite(t_cube *c, t_sprite *lst, double *buffer);
+int					ft_add_lst_sprite(int x, int y, t_sprite **lst);
 
 #endif

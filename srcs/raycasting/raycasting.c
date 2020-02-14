@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   raycasting.c                                     .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/06 17:06:49 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 02:41:14 by alidy       ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/06 17:06:49 by alidy             #+#    #+#             */
+/*   Updated: 2020/02/14 20:06:51 by alidy            ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
@@ -58,7 +57,7 @@ void	ft_draw2(t_cube *conf, t_sprite **lst)
 			conf->hit = 1;
 			if (conf->side == 0 && conf->map_x < conf->pos_x)
 				conf->side = 1;
-			else if (conf->side == 2 && conf->map_y < conf->pos_y) // != 0
+			else if (conf->side == 2 && conf->map_y < conf->pos_y)
 				conf->side = 3;
 		}
 		else if (conf->map[conf->map_y][conf->map_x] == '2')
@@ -107,7 +106,7 @@ void	ft_draw_text(int x, t_cube *c)
 	}
 }
 
-void	ft_draw3(int x, t_cube *c)
+void	ft_draw3(int x, t_cube *c, double *buffer)
 {
 	int i;
 
@@ -132,4 +131,5 @@ void	ft_draw3(int x, t_cube *c)
 	i = c->draw_e - 1;
 	while (++i < c->reso[1] - 1)
 		c->mlx_data[i * c->reso[0] + x] = c->color_f;
+	buffer[x] = c->pwd;
 }
