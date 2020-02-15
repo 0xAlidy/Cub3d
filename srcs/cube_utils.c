@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 09:13:49 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 19:17:27 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/15 20:14:09 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,14 @@ void	ft_init_text(t_cube *c)
 		c->ea, &(c->text_width), &(c->text_height));
 	c->text_we = mlx_xpm_file_to_image(c->mlx_ptr,
 		c->we, &(c->text_width), &(c->text_height));
-	c->text_sprite = mlx_xpm_file_to_image(c->mlx_ptr,
+	c->text_s = mlx_xpm_file_to_image(c->mlx_ptr,
 		c->s, &(c->text_width), &(c->text_height));
-	c->data_sprite = (int *)mlx_get_data_addr(c->text_sprite,
+	if (!c->text_so || !c->text_no || !c->text_ea || !c->text_we || !c->text_s)
+	{
+		ft_printf("Error\n__ERROR__TEXTURE__\n");
+		ft_close_mlx(c);
+	}
+	c->data_sprite = (int *)mlx_get_data_addr(c->text_s,
 		&(c->bpp), &(c->size_line), &(c->endian));
 	c->data_no = (int *)mlx_get_data_addr(c->text_no,
 		&(c->bpp), &(c->size_line), &(c->endian));
@@ -93,5 +98,6 @@ t_cube	ft_init_conf(void)
 	conf.move_s = 0.06;
 	conf.text_width = 500;
 	conf.text_height = 500;
+	conf.we = 0;
 	return (conf);
 }

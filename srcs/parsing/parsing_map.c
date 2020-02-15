@@ -6,11 +6,22 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 09:20:43 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 21:18:52 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/15 20:15:51 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+int		ft_check_after(char *str, int i)
+{
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int		ft_check_ori(char c)
 {

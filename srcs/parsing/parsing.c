@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 10:59:15 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 17:24:10 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/15 20:29:29 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	ft_parsing_all(int gc, char **gv, t_cube *conf)
 	if (res == 0)
 		ft_stderr(5, conf);
 	ft_parsing_map(line, conf, &check);
+	free(line);
 	while (res > 0 && end == 1)
 	{
 		res = get_next_line(fd, &line);

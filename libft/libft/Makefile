@@ -6,7 +6,7 @@
 #    By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/10 09:32:01 by alidy             #+#    #+#              #
-#    Updated: 2020/02/14 21:18:37 by alidy            ###   ########lyon.fr    #
+#    Updated: 2020/02/15 20:18:02 by alidy            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ HEADERS	=	libft.h
 
 CC		=	gcc
 
-FLAG 	= 	-Wall -Wextra -Werror
+FLAG 	= 	-Wall -Wextra -Werror -g3
 
 OPTION	= 	-c
 

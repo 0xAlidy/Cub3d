@@ -6,22 +6,11 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 09:17:29 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 18:05:25 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/15 20:04:49 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-int		ft_check_after(char *str, int i)
-{
-	while (str[i])
-	{
-		if (str[i] != ' ')
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 int		ft_util_path(char *line, int *i)
 {
@@ -35,17 +24,29 @@ int		ft_util_path(char *line, int *i)
 	return (save);
 }
 
-void	ft_parsing_path(char *line, t_cube *conf, int i, int nb)
+char	*ft_parsing2_path(char *line, t_cube *conf, int *i)
 {
 	int		save;
 	char	*res;
 	int		fd;
+	int		j;
 
-	save = ft_util_path(line, &i);
-	res = ft_substr(line, save, i - save);
-	if ((fd = open(res, 'r')) < 0)
+	j = 0;
+	save = ft_util_path(line, i);
+	res = ft_substr(line, save, (*i) - save);
+	while (res[j] && res[j] != ' ')
+		j++;
+	if ((fd = open(res, 'r')) < 0 || ft_memcmp(res + j - 4, ".xpm", 5) != 0)
 		ft_stderr(3, conf);
 	close(fd);
+	return (res);
+}
+
+void	ft_parsing_path(char *line, t_cube *conf, int i, int nb)
+{
+	char *res;
+
+	res = ft_parsing2_path(line, conf, &i);
 	if (nb == 1 && !(conf->no) && ft_check_after(line, i))
 		conf->no = res;
 	else if (nb == 2 && !(conf->so) && ft_check_after(line, i))

@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 10:35:44 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 20:16:43 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/15 19:05:45 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct		s_cube
 	void			*text_so;
 	void			*text_ea;
 	void			*text_we;
-	void			*text_sprite;
+	void			*text_s;
 	int				*mlx_data;
 	int				*data_no;
 	int				*data_so;

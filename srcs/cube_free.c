@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 17:25:49 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 21:43:01 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/15 20:30:45 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 int		ft_close_mlx(t_cube *conf)
 {
-	mlx_destroy_image(conf->mlx_ptr, conf->text_sprite);
-	mlx_destroy_image(conf->mlx_ptr, conf->text_no);
-	mlx_destroy_image(conf->mlx_ptr, conf->text_so);
-	mlx_destroy_image(conf->mlx_ptr, conf->text_ea);
-	mlx_destroy_image(conf->mlx_ptr, conf->text_we);
-	mlx_destroy_image(conf->mlx_ptr, conf->mlx_img);
+	if (conf->text_s)
+		mlx_destroy_image(conf->mlx_ptr, conf->text_s);
+	if (conf->text_no)
+		mlx_destroy_image(conf->mlx_ptr, conf->text_no);
+	if (conf->text_so)
+		mlx_destroy_image(conf->mlx_ptr, conf->text_so);
+	if (conf->text_ea)
+		mlx_destroy_image(conf->mlx_ptr, conf->text_ea);
+	if (conf->text_we)
+		mlx_destroy_image(conf->mlx_ptr, conf->text_we);
+	if (conf->mlx_img)
+		mlx_destroy_image(conf->mlx_ptr, conf->mlx_img);
 	if (conf->mlx_win)
 		mlx_destroy_window(conf->mlx_ptr, conf->mlx_win);
 	ft_free_conf(conf);

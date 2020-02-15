@@ -1,15 +1,15 @@
 # **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    Makefile                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2019/11/28 10:24:13 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/01/25 13:00:19 by alidy       ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/11/28 10:24:13 by alidy             #+#    #+#              #
+#    Updated: 2020/02/15 20:18:09 by alidy            ###   ########lyon.fr    #
+#                                                                              #
 # **************************************************************************** #
+
 
 HEADER			=		includes/ft_printf.h
 
@@ -36,7 +36,7 @@ RM				=		rm -f
 
 CC				=		gcc
 
-FLAGS			=		-Wall -Wextra -Werror -g3
+FLAGS			=		-Wall -Wextra -Werror
 
 SRCS			=		$(addprefix $(SRC_PATH)/,$(SRCS_NAME))
 

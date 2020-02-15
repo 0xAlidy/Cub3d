@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 09:23:44 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 18:05:30 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/15 18:32:41 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,18 @@ int		ft_parsing_arg(int gc, char **gv)
 	i = 0;
 	if (gc < 2 || gc > 3)
 		ft_stderr(0, 0);
-	if (gc == 3 && ft_memcmp(gv[2], "-save", 6) != 0)
+	if (gc == 3 && ft_memcmp(gv[2], "--save", 7) != 0)
 		ft_stderr(0, 0);
 	while (gv[1][i])
 		i++;
-	if (i > 3)
+	if (i > 4)
 	{
-		ft_memcmp(gv[i - 4], ".cub", 5);
-		fd = open(gv[1], 'r');
+		if (ft_memcmp(gv[1] + i - 4, ".cub", 5) != 0)
+			ft_stderr(0, 0);
+		if ((fd = open(gv[1], 'r')) < 0)
+			ft_stderr(0, 0);
 	}
-	if (fd < 1)
+	else
 		ft_stderr(0, 0);
 	return (fd);
 }
@@ -56,10 +58,10 @@ int		ft_get_id(char *str, t_cube *conf)
 	save = i;
 	while (str[i] && str[i] != ' ')
 		i++;
-	if (i - save > 2)
-		ft_stderr(1, conf);
-	else if (str[save] == '1' && ft_check_conf(conf))
+	if (str[save] == '1' && ft_check_conf(conf))
 		return (-1);
+	else if (i - save > 2)
+		ft_stderr(1, conf);
 	else if (i == save)
 		return (0);
 	conf->temp = ft_substr(str, save, i - save);
