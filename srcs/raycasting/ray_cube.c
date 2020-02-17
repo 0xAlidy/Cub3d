@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:35:16 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 19:18:17 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/17 19:12:38 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ int		ft_define_movement(int key, t_cube *conf)
 		conf->k_up = 1;
 	if (key == 125 || key == 1)
 		conf->k_down = 1;
-	if (key == 123 || key == 0)
+	if (key == 123)
 		conf->k_right = 1;
-	if (key == 124 || key == 2)
+	if (key == 0)
+		conf->k_right = 2;
+	if (key == 124)
 		conf->k_left = 1;
+	if (key == 2)
+		conf->k_left = 2;
 	keyhooks(conf);
 	return (0);
 }

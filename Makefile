@@ -6,7 +6,7 @@
 #    By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/10 09:32:01 by alidy             #+#    #+#              #
-#    Updated: 2020/02/15 20:05:40 by alidy            ###   ########lyon.fr    #
+#    Updated: 2020/02/17 19:22:16 by alidy            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS_NAME		=		cube.c							\
 						raycasting/ray_movement.c 		\
 						raycasting/ray_cube.c 			\
 						raycasting/ray_sprite.c 		\
+						raycasting/ray_move.c 			\
 						raycasting/raycasting.c 		\
 						
 
@@ -40,7 +41,7 @@ RM				=		rm -f
 
 CC				=		gcc
 
-FLAGS			=		-Wall -Wextra -Werror -g3
+FLAGS			=		-Wall -Wextra -Werror
 
 SRCS			=		$(addprefix $(SRC_PATH)/,$(SRCS_NAME))
 

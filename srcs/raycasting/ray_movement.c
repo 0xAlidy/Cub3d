@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 16:50:07 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 18:05:12 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/17 19:25:09 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,45 +46,37 @@ void	down_move(t_cube *conf)
 	}
 }
 
-void	right_move(t_cube *conf)
+void	left_move(t_cube *conf)
 {
-	float old_dir_x;
-	float old_plane_x;
+	int x;
+	int y;
 
-	old_dir_x = conf->dir_x;
-	old_plane_x = conf->plane_x;
-	if (conf->k_right == 1 && conf->k_left == 0)
+	x = (int)(conf->pos_x - conf->dir_y * conf->move_s);
+	y = (int)(conf->pos_y + conf->dir_x * conf->move_s);
+	if (conf->k_right == 0 && conf->k_left == 2)
 	{
-		conf->dir_x = conf->dir_x * cos(-conf->rota_s) -
-			conf->dir_y * sin(-conf->rota_s);
-		conf->dir_y = old_dir_x * sin(-conf->rota_s) +
-			conf->dir_y * cos(-conf->rota_s);
-		conf->plane_x = conf->plane_x * cos(-conf->rota_s) -
-			conf->plane_y * sin(-conf->rota_s);
-		conf->plane_y = old_plane_x * sin(-conf->rota_s) +
-			conf->plane_y * cos(-conf->rota_s);
+		if (conf->map[y][x] == '0')
+		{
+			conf->pos_x -= conf->dir_y * conf->move_s;
+			conf->pos_y += conf->dir_x * conf->move_s;
+		}
 	}
 }
 
-void	left_move(t_cube *conf)
+void	right_move(t_cube *conf)
 {
-	float old_dir_x;
-	float old_plane_x;
+	int x;
+	int y;
 
-	old_dir_x = conf->dir_x;
-	old_plane_x = conf->plane_x;
-	if (conf->k_left == 1 && conf->k_right == 0)
+	x = (int)(conf->pos_x + conf->dir_y * conf->move_s);
+	y = (int)(conf->pos_y - conf->dir_x * conf->move_s);
+	if (conf->k_left == 0 && conf->k_right == 2)
 	{
-		old_dir_x = conf->dir_x;
-		conf->dir_x = conf->dir_x * cos(conf->rota_s)
-		- conf->dir_y * sin(conf->rota_s);
-		conf->dir_y = old_dir_x * sin(conf->rota_s) +
-			conf->dir_y * cos(conf->rota_s);
-		old_plane_x = conf->plane_x;
-		conf->plane_x = conf->plane_x * cos(conf->rota_s)
-		- conf->plane_y * sin(conf->rota_s);
-		conf->plane_y = old_plane_x * sin(conf->rota_s) +
-			conf->plane_y * cos(conf->rota_s);
+		if (conf->map[y][x] == '0')
+		{
+			conf->pos_x += conf->dir_y * conf->move_s;
+			conf->pos_y -= conf->dir_x * conf->move_s;
+		}
 	}
 }
 
@@ -95,8 +87,12 @@ int		keyhooks(t_cube *conf)
 	if (conf->k_down == 1)
 		down_move(conf);
 	if (conf->k_left == 1)
+		left_rota(conf);
+	else if (conf->k_left == 2)
 		left_move(conf);
 	if (conf->k_right == 1)
+		right_rota(conf);
+	else if (conf->k_right == 2)
 		right_move(conf);
 	return (0);
 }
