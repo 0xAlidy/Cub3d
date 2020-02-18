@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 10:35:44 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/17 19:21:41 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/18 21:03:13 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void				ft_draw2(t_cube *conf, t_sprite **lst);
 void				ft_draw_text(int x, t_cube *c);
 void				ft_draw3(int x, t_cube *c, double *buffer);
 void				ft_start_rota(t_cube *conf);
-void				ft_start_move(t_cube *c);
+void				ft_change_start(t_cube *conf);
 void				right_rota(t_cube *conf);
 void				left_rota(t_cube *conf);
 void				ft_create_bmp(t_cube *conf);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 16:52:54 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 19:17:06 by alidy            ###   ########lyon.fr   */
+/*   Created: 2020/02/18 21:01:56 by alidy             #+#    #+#             */
+/*   Updated: 2020/02/18 21:02:04 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_game(t_cube *conf)
 	conf->reso[0], conf->reso[1], "Cub3D")) == NULL)
 		ft_close_mlx(conf);
 	ft_start_rota(conf);
-	ft_start_move(conf);
+	ft_change_start(conf);
 	mlx_loop_hook(conf->mlx_ptr, ft_raycasting, conf);
 	mlx_hook(conf->mlx_win, 2, 0, ft_define_movement, conf);
 	mlx_hook(conf->mlx_win, 3, 0, ft_reset_movement, conf);

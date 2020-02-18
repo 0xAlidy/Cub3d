@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 16:58:08 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 19:16:39 by alidy            ###   ########lyon.fr   */
+/*   Created: 2020/02/18 21:01:11 by alidy             #+#    #+#             */
+/*   Updated: 2020/02/18 21:01:41 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_create_bmp(t_cube *conf)
 	buffer[conf->reso[0]] = 0;
 	ft_init_cube(conf);
 	ft_start_rota(conf);
-	ft_start_move(conf);
+	ft_change_start(conf);
 	while (x < conf->reso[0])
 	{
 		ft_init_raycast(x, conf);

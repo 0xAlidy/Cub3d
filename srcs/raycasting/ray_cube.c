@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/06 17:35:16 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/17 19:12:38 by alidy            ###   ########lyon.fr   */
+/*   Created: 2020/02/18 21:02:18 by alidy             #+#    #+#             */
+/*   Updated: 2020/02/18 21:02:33 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,40 +66,8 @@ void	ft_start_rota(t_cube *conf)
 	conf->plane_y = old_plane_x * sin(-rota) + conf->plane_y * cos(-rota);
 }
 
-void	ft_change_start(t_cube *conf, int x, int y)
+void	ft_change_start(t_cube *conf)
 {
-	if (conf->pos_x == 1 && conf->pos_y == y - 2)
-	{
-		conf->pos_x += 0.0001;
-		conf->pos_y += 0.9999;
-	}
-	else if (conf->pos_x == x - 2 && conf->pos_y == 1)
-	{
-		conf->pos_x += 0.9999;
-		conf->pos_y += 0.0001;
-	}
-	else if (conf->pos_x == x - 2 && conf->pos_y == y - 2)
-	{
-		conf->pos_x += 0.9999;
-		conf->pos_y += 0.9999;
-	}
-	else
-	{
-		conf->pos_x += 0.0001;
-		conf->pos_y += 0.0001;
-	}
-}
-
-void	ft_start_move(t_cube *conf)
-{
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	while (conf->map[0][x])
-		x++;
-	while (conf->map[y])
-		y++;
-	ft_change_start(conf, x, y);
+	conf->pos_x += 0.50;
+	conf->pos_y += 0.50;
 }
