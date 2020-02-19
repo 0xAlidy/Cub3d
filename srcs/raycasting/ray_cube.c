@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:02:18 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/18 21:02:33 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/19 10:52:46 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_start_rota(t_cube *conf)
 	float	old_plane_x;
 	float	rota;
 
-	rota = 0;
+	rota = 0.1;
 	if (conf->ori == 'W')
 		rota = 1.58;
 	else if (conf->ori == 'S')
