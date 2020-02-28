@@ -6,7 +6,7 @@
 #    By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/10 09:32:01 by alidy             #+#    #+#              #
-#    Updated: 2020/02/19 11:00:11 by alidy            ###   ########lyon.fr    #
+#    Updated: 2020/02/28 15:45:56 by alidy            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS_NAME		=		cube.c							\
 
 OBJS			=		${SRCS:.c=.o}
 
-NAME			=		cub3D
+NAME			=		Cub3D
 
 RM				=		rm -f
 
