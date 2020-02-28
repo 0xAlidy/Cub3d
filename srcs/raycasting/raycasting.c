@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:06:49 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/14 20:06:51 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/25 06:02:46 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,29 @@ void	ft_draw2(t_cube *conf, t_sprite **lst)
 void	ft_choose_text(t_cube *c)
 {
 	if (c->side == 3)
+	{
 		c->data_text = c->data_no;
+		c->text_width = c->text_width_no;
+		c->text_height = c->text_height_no;
+	}
 	else if (c->side == 2)
+	{
 		c->data_text = c->data_so;
+		c->text_width = c->text_width_so;
+		c->text_height = c->text_height_so;
+	}
 	else if (c->side == 1)
+	{
 		c->data_text = c->data_we;
+		c->text_width = c->text_width_we;
+		c->text_height = c->text_height_we;
+	}
 	else
+	{
 		c->data_text = c->data_ea;
+		c->text_width = c->text_width_ea;
+		c->text_height = c->text_height_ea;
+	}
 }
 
 void	ft_draw_text(int x, t_cube *c)
@@ -84,6 +100,7 @@ void	ft_draw_text(int x, t_cube *c)
 	int		y;
 
 	y = c->draw_s - 1;
+	ft_choose_text(c);
 	if (c->side == 0 || c->side == 1)
 		c->wall_x = c->pos_y + c->pwd * c->rdir_y;
 	else
@@ -96,7 +113,6 @@ void	ft_draw_text(int x, t_cube *c)
 		c->tex_x = c->text_width - c->tex_x - 1;
 	step = 1.0 * c->text_height / c->line_h;
 	tex_pos = (c->draw_s - c->reso[1] / 2 + c->line_h / 2) * step;
-	ft_choose_text(c);
 	while (++y < c->draw_e)
 	{
 		c->tex_y = (int)tex_pos;

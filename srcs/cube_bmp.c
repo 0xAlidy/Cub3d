@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:01:11 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/18 21:01:41 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/19 11:23:45 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_init_bmp(char *filename, t_cube *conf)
 	bih.y_ppm = 2;
 	bih.clr_used = 0;
 	bih.clr_important = 0;
-	fd = open(filename, O_RDWR | O_CREAT, 0777);
+	fd = open(filename, O_TRUNC | O_RDWR | O_CREAT, S_IRWXU);
 	write(fd, &bfh, 14);
 	ft_fill_bmp(fd, bih, conf);
 	close(fd);

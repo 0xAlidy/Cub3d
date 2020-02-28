@@ -6,7 +6,7 @@
 /*   By: alidy <alidy@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 09:13:49 by alidy             #+#    #+#             */
-/*   Updated: 2020/02/15 20:14:09 by alidy            ###   ########lyon.fr   */
+/*   Updated: 2020/02/25 06:04:14 by alidy            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ int		color(int r, int g, int b)
 void	ft_init_text(t_cube *c)
 {
 	c->text_so = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->so, &(c->text_width), &(c->text_height));
+		c->so, &(c->text_width_so), &(c->text_height_so));
 	c->text_no = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->no, &(c->text_width), &(c->text_height));
+		c->no, &(c->text_width_no), &(c->text_height_no));
 	c->text_ea = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->ea, &(c->text_width), &(c->text_height));
+		c->ea, &(c->text_width_ea), &(c->text_height_ea));
 	c->text_we = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->we, &(c->text_width), &(c->text_height));
+		c->we, &(c->text_width_we), &(c->text_height_we));
 	c->text_s = mlx_xpm_file_to_image(c->mlx_ptr,
-		c->s, &(c->text_width), &(c->text_height));
+		c->s, &(c->text_width_s), &(c->text_height_s));
 	if (!c->text_so || !c->text_no || !c->text_ea || !c->text_we || !c->text_s)
 	{
 		ft_printf("Error\n__ERROR__TEXTURE__\n");
@@ -96,8 +96,6 @@ t_cube	ft_init_conf(void)
 	conf.bpp = 32;
 	conf.rota_s = 0.06;
 	conf.move_s = 0.06;
-	conf.text_width = 500;
-	conf.text_height = 500;
 	conf.we = 0;
 	return (conf);
 }
