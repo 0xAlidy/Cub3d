@@ -1,6 +1,5 @@
 # cub3d
-Ce projet est inspiré du jeu Wolfeinstein3D, considéré comme le premier FPS
-jamais développé.
-- Il vous permettra d’explorer la technique du ray-casting.
-- Votre objectif est de faire une vue dynamique au sein d’un labyrinthe, dans lequel vous devrez trouver
-votre chemin
+This project is inspired by the world-famous Wolfenstein 3D game, which
+was the first FPS ever.
+- It will enable you to explore ray-casting.
+- Your goal will be to make a dynamic view inside a maze, in which you’ll have to find your way.
